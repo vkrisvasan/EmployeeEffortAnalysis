@@ -1,3 +1,36 @@
+"""
+Data Input and Preprocessing
+    read_all_sheets: Reads all sheets of an Excel file and combines them into a single DataFrame. Handles errors during file reading.
+    preprocess_daily_effort_tracker: Extracts employee ID, calculates day of week, sorts, and removes duplicates from effort data. Handles errors during preprocessing.
+    read_employee_mapping: Reads employee mapping from an Excel file. Handles errors during file reading.
+    validate_dataframe: Checks if a DataFrame is empty or missing required columns. Prints warnings/errors.
+Data Aggregation and Metrics
+    build_timesheet_completion_dump: Identifies employees who completed/didn't complete timesheets on each date. Filters and processes data based on specified criteria. [MODIFY THE code to set up the right ime in Filter_date = "YYYY-MM-DD"]
+    create_portfolio_date_pivot: Calculates and pivots timesheet completion percentage by portfolio and date. Handles data validation and formatting.
+    preprocess_data: Merges effort and employee data, cleans, and prepares for analysis. Drops unnecessary columns.
+    save_to_excel: Saves a DataFrame to an Excel file in memory (BytesIO object).
+    validate_merged_dataframe: Checks for required columns in the merged DataFrame.
+    calculate_metrics: Adds columns for timesheet completion and leave status.
+    group_by_portfolio_date: Groups data by portfolio and date for aggregation.
+    aggregate_metrics: Aggregates effort metrics (sums) by portfolio and date.
+    calculate_percentages: Calculates effort percentages by category.
+    calculate_effort: Calculates total effort for specific effort types.
+    create_gap_column: Calculates the difference between total daily hours and effort.
+    create_deviations: Identifies high/low deviations from expected effort.
+    create_file_name: Generates a file name with a timestamp.
+    create_excel_with_multiple_tabs: Creates an Excel file with multiple sheets from provided DataFrames.
+    generate_summary_effort: Orchestrates the calculation of various effort metrics.
+    aggregate_timesheet_data: Aggregates timesheet completion and effort percentages by portfolio.
+Streamlit Application
+    Overall: Creates a Streamlit web application to upload, process, and visualize effort data. Handles file uploads and data display.
+
+How to run the application
+    streamlit run EmployeeEffortAnalysis.py
+    upload the timesheet file
+    upload the employee mapping file
+    
+"""
+
 import streamlit as st
 import pandas as pd
 from io import BytesIO
